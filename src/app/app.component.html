@@ -1,1 +1,44 @@
-<app-article-list></app-article-list>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>Pebble IT</title>
+  <meta charset="UTF-8">
+  <!-- <link rel="stylesheet" href="layout.css" type="text/css"> -->
+
+</head>
+<body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="#">Pebble IT</a></h1>
+      <h2>Serverless Website Prototype</h2>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a (click)="page = 'article-list'">Blog</a></li>
+        <li class="last"><a (click)="page = 'contact-us'">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="clear"></div>
+  </header>
+</div>
+
+
+<app-article-list *ngIf="page === 'article-list'"></app-article-list>
+<app-download *ngIf="page === 'download'"></app-download>
+<app-contact-us *ngIf="page === 'contact-us'"></app-contact-us>
+
+
+<!-- footer -->
+<div class="wrapper row3">
+  <footer id="footer">
+
+    <p class="fl_right">by Federation University</p>
+    <div class="clear"></div>
+  </footer>
+</div>
+</body>
+</html>

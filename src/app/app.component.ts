@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'serverless-pebble-it';
+  page = 'list';
 
   constructor() {
 
