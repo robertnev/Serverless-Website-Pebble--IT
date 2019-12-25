@@ -1,1 +1,16 @@
 <p>contact-us works!</p>
+
+<form [formGroup]="contactUsFormGroup">
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+  <br/>
+  <label>
+    Email address:
+    <input type="text" formControlName="email">
+  </label>
+
+  <br/>
+  <button (click)="onSubmit($event)">Submit</button>
+</form>
