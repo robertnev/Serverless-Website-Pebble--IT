@@ -33,8 +33,14 @@ export class ContactUsComponent implements OnInit {
     console.log(JSON.stringify(this.contactUsFormGroup.value));
 
     if (this.contactUsFormGroup.valid) {
-      this.http.post('http://me.net', this.contactUsFormGroup.value)
-        .subscribe((value) => {}, (error) => {}, () => {});
+      this.http.post('https://egmwqp0tah.execute-api.ap-southeast-2.amazonaws.com/default/pebble-it-send-email-contact-us', this.contactUsFormGroup.value)
+        .subscribe((value) => {
+          console.log(JSON.stringify(value));
+        }, (error) => {
+          console.log(JSON.stringify(error));
+        }, () => {
+          console.log('send-email-contact-us API invocation is completed');
+        });
     }
   }
 
