@@ -32,59 +32,22 @@
     <div id="content">
       <!-- section 1 -->
       <section>
+
         <!-- article 1 -->
-        <article>
-          <h2>Post Title 1</h2>
-          <address>
-          Ken Nguyen
-          </address>
-          <time>Sunday, 12<sup>th</sup> June 2020</time>
-          
-          <p>INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT 
-              INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT
-              INSERT TEXT INSERT TEXT
-              INSERT TEXT INSERT TEXT
-              INSERT TEXT INSERT TEXT </p>
-          <p class="more"><a href="#">Read More &raquo;</a></p>
-        </article>
-        <!-- article 2 -->
-        <article>
-          <h2>Post Title 2</h2>
-          <address>
-          Bill Johnson
-          </address>
-          <time>Friday, 6<sup>th</sup> April 2018</time>
-          
-          <p>INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT 
-              INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT
-              INSERT TEXT INSERT TEXT
-              INSERT TEXT INSERT TEXT
-              INSERT TEXT INSERT TEXT </p>
-              
+        <article *ngFor="let blog of content.blogList">
+          <h2>{{blog.title}}</h2>
+          <div>{{blog.author}}</div>
+          <time>{{blog.date}}</time>
+
+          <p>{{blog.description}}</p>
           <p class="more"><a href="#">Read More &raquo;</a></p>
         </article>
 
-        <article>
-          <h2>Post Title 3 </h2>
-          <address>
-          Robert Neville
-          </address>
-          <time>Friday, 3<sup>th</sup> April 2019</time>
-          
-          <p>INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT 
-              INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT INSERT TEXT
-              INSERT TEXT INSERT TEXT
-              INSERT TEXT INSERT TEXT
-              INSERT TEXT INSERT TEXT </p>
-              
-          <p class="more"><a href="#">Read More &raquo;</a></p>
-        </article>
-        
       </section>
-    
-    
-    </div>  
- 
+
+
+    </div>
+
     <!-- / content body -->
     <div class="clear"></div>
   </div>
@@ -92,7 +55,7 @@
 <!-- footer -->
 <div class="wrapper row3">
   <footer id="footer">
-    
+
     <p class="fl_right">by Federation University</p>
     <div class="clear"></div>
   </footer>
