@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-us',
@@ -33,7 +33,16 @@ export class ContactUsComponent implements OnInit {
     console.log(JSON.stringify(this.contactUsFormGroup.value));
 
     if (this.contactUsFormGroup.valid) {
-      this.http.post('https://egmwqp0tah.execute-api.ap-southeast-2.amazonaws.com/default/pebble-it-send-email-contact-us', this.contactUsFormGroup.value)
+
+      // TODO: put this into environment specific configuration
+      const apiUrlSendEmailContactUs =
+        'https://egmwqp0tah.execute-api.ap-southeast-2.amazonaws.com/default/pebble-it-send-email-contact-us';
+
+      this.http.post(apiUrlSendEmailContactUs, this.contactUsFormGroup.value, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/x-www-form-urlencoded'
+        })
+      })
         .subscribe((value) => {
           console.log(JSON.stringify(value));
         }, (error) => {
