@@ -1,33 +1,44 @@
-<div class="wrapper row1">
-    <header id="header" class="clear">
-      <div id="hgroup">
-        <h1><a href="#">Pebble IT</a></h1>
-        <h2>Serverless Website Prototype</h2>
+
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>Pebble IT</title>
+      
+    </head>
+  
+  
+  
+    <body>
+  
+      <header>
+        <div id="header-logo">
+          <h1 class="header-logo--title"><a href="#">Pebble IT</a></h1>
+          <p class="header-logo--subtitle">Serverless Website Prototype</p>
+        </div>
+        <nav id="header-navigation">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a (click)="page = 'article-list'">Blog</a></li>
+            <li><a (click)="page = 'contact-us'">Contact Us</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+  
+      <div id="app-content"> 
+          <app-article-list *ngIf="page === 'article-list'"></app-article-list>
+          <app-download *ngIf="page === 'download'"></app-download>
+          <app-contact-us *ngIf="page === 'contact-us'"></app-contact-us>
       </div>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a (click)="page = 'article-list'">Blog</a></li>
-          <li class="last"><a (click)="page = 'contact-us'">Contact Us</a></li>
-        </ul>
-      </nav>
-      <div class="clear"></div>
-    </header>
-  </div>
+    
   
- <div id="app-content"> 
-  <app-article-list *ngIf="page === 'article-list'"></app-article-list>
-  <app-download *ngIf="page === 'download'"></app-download>
-  <app-contact-us *ngIf="page === 'contact-us'"></app-contact-us>
-</div>
   
-  <!-- footer -->
-  <div class="wrapper row3">
-    <footer id="footer">
+      <footer>
+        <p class="push-right">by Federation University</p>
+      </footer>
   
-      <p class="fl_right">by Federation University</p>
-      <div class="clear"></div>
-    </footer>
-  </div> 
+    </body>
+  </html>

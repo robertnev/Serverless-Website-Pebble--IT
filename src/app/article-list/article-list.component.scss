@@ -1,25 +1,21 @@
 
-/*----------------------------------------------Content Area-------------------------------------*/
-
-#container{padding:30px 0;}
-#container section{margin:0 0 30px 0;}
-#container section.last{margin:0;}
-#container .more{text-align:right; text-transform:uppercase; font-size:smaller; font-weight:bold;}
-
-/* ------Main Content-----*/
-
-#container #content{float:left; width:630px;}
-
-#container #content section article{}
-#container #content section article h2{text-transform:uppercase;}
-#container #content section article address{font-size:10px; font-style:normal;}
-#container #content section article time{font-size:10px;}
-
-#container #content #services{}
-#container #content #services ul{margin:0; padding:0; list-style:none;}
-#container #content #services ul li{display:block; width:300px;}
-#container #content #services ul li.odd{float:left;}
-#container #content #services ul li.even{float:right;}
-#container #content #services ul li img{width:290px; height:100px; margin:0 0 15px 0; padding:4px; border:1px solid #666666;}
-
-
+  .blog-content-section{
+    width: 90%;
+    margin: 30px auto 30px;
+    border: 1px solid skyblue;
+  
+  }
+  
+  .blog-content-section .main-content{
+    width: 70%;
+    float: left;
+    border: 1px solid blue;
+  
+  }
+  
+  .blog-content-section .sidebar{
+    width: 29%;
+    float: left;
+    border: 1px solid green;
+    height: 300px;
+  }
