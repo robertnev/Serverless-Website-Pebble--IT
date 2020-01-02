@@ -2,12 +2,27 @@
   <div class="blog-content-section clearfix">
   
     <div class="main-content">
-          <h1>TESTING</h1>
-    </div>
-  
-    <div class="sidebar">
-        <p>TESTING SIDEBAR</p>
-  
-    </div>
+        <h1>TESTING</h1>
+        <section>
+          
+            <article *ngFor="let blog of content.blogList">
+              <h2>{{blog.title}}</h2>
+              <div>{{blog.author}}</div>
+              <time>{{blog.date}}</time>
+    
+              <p>{{blog.description}}</p>
+              <p class="more"><a href="download.component.html">Read More &raquo;</a></p>
+
+              <p><br><br></p>
+            </article>
+
+          </section>   
+          </div> 
+    
+          <div class="sidebar">
+            <p>TESTING SIDEBAR</p>
+      
+        </div>
+   
   
   </div>

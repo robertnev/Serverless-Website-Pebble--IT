@@ -26,16 +26,14 @@
           </ul>
         </nav>
       </header>
-      
-  
+      <main>
       <div id="app-content"> 
           <app-article-list *ngIf="page === 'article-list'"></app-article-list>
           <app-download *ngIf="page === 'download'"></app-download>
           <app-contact-us *ngIf="page === 'contact-us'"></app-contact-us>
       </div>
-    
-  
-  
+      </main>
+
       <footer>
         <p class="push-right">by Federation University</p>
       </footer>
