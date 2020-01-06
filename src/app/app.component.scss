@@ -22,7 +22,7 @@
     position: relative;
     display: block;
     height: auto;
-    background-color: rgb(44, 44, 44);
+    background-color: black;
     padding: 0 250px;
   }
   #header-logo {
@@ -36,10 +36,10 @@
   }
   .header-logo--title a {
     text-decoration: none;
-    color: #C0BAB6;
-  }
+    color: rgb(177, 177, 177);
+  }  
   .header-logo--subtitle {
-    color: #C0BAB6;
+    color: rgb(177, 177, 177);
   }
   #header-navigation {
     float: right;
@@ -56,7 +56,7 @@
     text-transform: uppercase;
   }
   #header-navigation ul li a {
-    color: #C0BAB6;
+    color: rgb(177, 177, 177);
     text-decoration: none;
   }
   main{
@@ -75,6 +75,8 @@
     position: fixed;
     //display: block;
     height: 30px;
-    background-color: blueviolet;
+    background-color: black;
+    color: white;
     //margin-top: auto;
+    text-align: center;
   }

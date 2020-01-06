@@ -1,18 +1,32 @@
-<div>
-<p>contact-us works!</p>
+<div class="contact-us-section">
 
-<form [formGroup]="contactUsFormGroup">
-  <label>
-    Name:
+<p>CONTACT US</p>
+
+<form class="contact-us-content" [formGroup]="contactUsFormGroup">
+  <!--NAME-->
+  <div>
+    <label class="label">Name</label><br>
     <input type="text" formControlName="name">
-  </label>
+  </div>
   <br/>
-  <label>
-    Email address:
-    <input type="text" formControlName="email">
-  </label>
+
+  <!--EMAIL-->
+<div>
+  <label class= "label">Email</label><br>
+  <input type="text" formControlName="email">
+</div>
+<br>
+  
+  <!--MESSAGE-->
+  <div>
+      <label class= "label">Enquiries</label><br>
+      <textarea area name="message" class="textarea"></textarea>
+    </div>
+
 
   <br/>
-  <button (click)="onSubmit($event)">Submit</button>
+  <button type="submit" class="button" (click)="onSubmit($event)">
+    Submit
+  </button>
 </form>
 </div>

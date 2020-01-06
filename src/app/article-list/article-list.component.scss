@@ -2,20 +2,28 @@
   .blog-content-section{
   
     margin: 30px auto 30px;
-    border: 1px solid red;
+    // border: 1px solid red;
   
   }
   
   .blog-content-section .main-content{
     width: 70%;
     float: left;
-    border: 1px solid blue;
+    padding-bottom: 29px;
+    // border: 1px solid blue;
   
+  }
+  article{
+    border-bottom: 1px solid black;
   }
   
   .blog-content-section .sidebar{
     width: 29%;
     float: left;
-    border: 1px solid green;
+    // border: 1px solid green;
     height: 300px;
+  }
+  .button{
+    padding: 10px 10px;
+    
   }

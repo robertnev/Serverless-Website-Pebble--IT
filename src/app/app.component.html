@@ -23,14 +23,22 @@
             <li><a href="#">Services</a></li>
             <li><a (click)="page = 'article-list'">Blog</a></li>
             <li><a (click)="page = 'contact-us'">Contact Us</a></li>
+            
+            
           </ul>
         </nav>
       </header>
       <main>
       <div id="app-content"> 
-          <app-article-list *ngIf="page === 'article-list'"></app-article-list>
-          <app-download *ngIf="page === 'download'"></app-download>
+          <app-article-list *ngIf="page === 'article-list'"
+            (onOpenSingleArticle)="handleOpeningSingleArticle($event)"
+          ></app-article-list>
+          <!-- <app-download *ngIf="page === 'download'"></app-download> -->
           <app-contact-us *ngIf="page === 'contact-us'"></app-contact-us>
+          <app-single-article *ngIf="page === 'single-article'"
+            [blog]="blog"
+          ></app-single-article>
+
       </div>
       </main>
 

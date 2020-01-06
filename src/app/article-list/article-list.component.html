@@ -2,19 +2,28 @@
   <div class="blog-content-section clearfix">
   
     <div class="main-content">
-        <h1>TESTING</h1>
+        
         <section>
           
+          <div *ngIf="content && content.blogList">
             <article *ngFor="let blog of content.blogList">
               <h2>{{blog.title}}</h2>
               <div>{{blog.author}}</div>
               <time>{{blog.date}}</time>
     
-              <p>{{blog.description}}</p>
-              <p class="more"><a href="download.component.html">Read More &raquo;</a></p>
+              <p>{{displayTruncatedContent(blog.description)}}</p>
+              <!-- <p class="more"><a (click)="openSingleArticle(blog)">Read More &raquo;</a></p> -->
+              <button class="button" (click)="openSingleArticle(blog)">Read more</button>
+              <br><br><br>
+              
+              <!-- <button type="submit" class="button" (click)="onSubmit($event)">
+                  Submit
+                </button> -->
+                
 
-              <p><br><br></p>
-            </article>
+          </article>
+  
+          </div>
 
           </section>   
           </div> 
@@ -24,5 +33,4 @@
       
         </div>
    
-  
   </div>

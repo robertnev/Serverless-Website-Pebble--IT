@@ -7,13 +7,15 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { DownloadComponent } from './download/download.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SingleArticleComponent } from './single-article/single-article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticleListComponent,
     DownloadComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    SingleArticleComponent
   ],
   imports: [
     BrowserModule,

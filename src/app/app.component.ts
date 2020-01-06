@@ -7,9 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'serverless-pebble-it';
-  page = 'contact-us';
+  page = 'article-list';
+  blog;
 
   constructor() {
 
+  }
+
+  handleOpeningSingleArticle(_blog) {
+    this.blog = _blog;
+    this.page = 'single-article';
   }
 }
