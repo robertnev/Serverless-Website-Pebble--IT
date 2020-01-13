@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ArticleListComponent implements OnInit {
 
-  content;
+  content; 
 
   
   @Output ()  onOpenSingleArticle = new EventEmitter();

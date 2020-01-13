@@ -1,1 +1,27 @@
-<p>download works!</p>
+
+<div class="download-section">
+
+    <p>Please provide your Name and Email, we will send you a Download Link. <br>Thank you. </p>
+    
+    <form class="download-content" [formGroup]="downloadFormGroup">
+      <!--NAME-->
+      <div>
+        <label class="label">Name</label><br>
+        <input type="text" formControlName="name">
+      </div>
+      <br/>
+    
+      <!--EMAIL-->
+    <div>
+      <label class= "label">Email</label><br>
+      <input type="text" formControlName="email">
+    </div>
+    <br>
+
+     <!--BUTTON-->
+      <br/>
+      <button type="submit" class="button" (click)="onSubmit($event)">
+        Submit
+      </button>
+    </form>
+</div>

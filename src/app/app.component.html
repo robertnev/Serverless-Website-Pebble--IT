@@ -37,7 +37,14 @@
           <app-contact-us *ngIf="page === 'contact-us'"></app-contact-us>
           <app-single-article *ngIf="page === 'single-article'"
             [blog]="blog"
+            (onOpenDownloadPage)="handleOpeningDownloadPage($event)"
           ></app-single-article>
+
+          <app-download *ngIf="page === 'download'"
+            
+            
+          ></app-download>
+          
 
       </div>
       </main>

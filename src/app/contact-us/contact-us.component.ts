@@ -39,6 +39,8 @@ export class ContactUsComponent implements OnInit {
       const apiUrlSendEmailContactUs =
         'https://egmwqp0tah.execute-api.ap-southeast-2.amazonaws.com/default/pebble-it-send-email-contact-us';
 
+        // https://j3pxo8zxi1.execute-api.ap-southeast-2.amazonaws.com/Prod/send-email-contact-us
+
       this.http.post(apiUrlSendEmailContactUs, this.contactUsFormGroup.value, {
         headers: new HttpHeaders({
           'Content-Type': 'application/x-www-form-urlencoded'

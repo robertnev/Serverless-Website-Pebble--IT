@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-single-article',
@@ -9,6 +9,8 @@ export class SingleArticleComponent implements OnInit {
 
   @Input() blog;
 
+  @Output ()  onOpenDownloadPage = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
@@ -18,5 +20,11 @@ export class SingleArticleComponent implements OnInit {
     location.reload();
 
   }
+
+  openDownloadPage(blog){
+    console.log("this is working");
+    this.onOpenDownloadPage.emit(blog);
+  }
+
 
 }

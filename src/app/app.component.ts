@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'serverless-pebble-it';
   page = 'article-list';
   blog;
+  // test;
 
   constructor() {
 
@@ -18,4 +19,14 @@ export class AppComponent {
     this.blog = _blog;
     this.page = 'single-article';
   }
+
+  handleOpeningDownloadPage(_blog) {
+    this.blog = _blog;
+    this.page = 'download';
+  }
+  
+
+
+
+
 }
