@@ -4,11 +4,11 @@
     padding: 0;
     box-sizing: border-box
   }
-  
+
   body {
     margin: 0;
     padding-bottom: 30px;
-    
+
     //background-color: #f2f2f2;
     //min-height: 100vh;
     //display: flex;
@@ -16,8 +16,8 @@
   }
 
 
-  
-  
+
+
   header {
     position: relative;
     display: block;
@@ -37,7 +37,7 @@
   .header-logo--title a {
     text-decoration: none;
     color: rgb(177, 177, 177);
-  }  
+  }
   .header-logo--subtitle {
     color: rgb(177, 177, 177);
   }
@@ -62,8 +62,15 @@
   main{
     width: 90vw;
     margin: 0 auto;
-    
+
   }
+
+  .menuActive {
+    background-color: dimgray;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
   clearfix::after{
     content: " ";
     display: block;

@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Component, OnInit, OnDestroy, EventEmitter, Output, Input} from '@angular/core';
+import {BlogService} from '../service/blog.service';
+import {Blog} from '../entity/blog';
 
 
 @Component({
@@ -7,32 +8,34 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.scss']
 })
-export class ArticleListComponent implements OnInit {
+export class ArticleListComponent implements OnInit, OnDestroy {
 
-  content; 
+  @Input() descriptionMaxLength: number;
+  @Input() descriptionSuffix: string;
 
-  
-  @Output ()  onOpenSingleArticle = new EventEmitter();
+  blogs: Blog[] = [];
+  subscriptions: { blogs? } = {};
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(
+    private blogService: BlogService,
+  ) { }
 
   ngOnInit() {
-    this.http.get("https://serverlesspebbleit.s3-ap-southeast-2.amazonaws.com/content.json")
-    .subscribe( (value) => {
-      this.content = value;
-      console.log(JSON.stringify(this.content));
-    }, (error: any) => {}, () => {});
-
+    this.descriptionMaxLength = this.descriptionMaxLength || 100;
+    this.descriptionSuffix = this.descriptionSuffix || ' ...';
+    this.subscriptions.blogs = this.blogService.getBlogs$().subscribe(newBlogs => this.blogs = newBlogs || []);
   }
 
-  openSingleArticle(blog) {
-    this.onOpenSingleArticle.emit(blog);
+  ngOnDestroy(): void {
+    for (const [key, value] of Object.entries(this.subscriptions)) {
+      value.unsubscribe();
+    }
   }
 
   displayTruncatedContent(content: string) {
-    if (content && content.length > 300) {
-      return content.substring(0,295) + ' ...';
+    if (content && content.length > this.descriptionMaxLength) {
+      const textLength = this.descriptionMaxLength - this.descriptionSuffix.length;
+      return content.substring(0, textLength) + this.descriptionSuffix;
     }
 
     return content;

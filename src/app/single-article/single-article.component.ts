@@ -1,30 +1,40 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {BlogService} from '../service/blog.service';
+import {Location} from '@angular/common';
+import {Blog} from '../entity/blog';
 
 @Component({
   selector: 'app-single-article',
   templateUrl: './single-article.component.html',
   styleUrls: ['./single-article.component.scss']
 })
-export class SingleArticleComponent implements OnInit {
+export class SingleArticleComponent implements OnInit, OnDestroy {
 
-  @Input() blog;
+  blog: Blog;
+  subscriptions: { params? } = {};
 
-  @Output ()  onOpenDownloadPage = new EventEmitter();
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private blogService: BlogService,
+    private location: Location,
+  ) {
 
-  constructor() { }
+  }
 
   ngOnInit() {
+    this.subscriptions.params = this.activatedRoute.params.subscribe(params => {
+      this.blog = this.blogService.getBlogWithId(params.blogId);
+    });
+  }
+
+  ngOnDestroy(): void {
+    for (const [key, value] of Object.entries(this.subscriptions)) {
+      value.unsubscribe();
+    }
   }
 
   doBack() {
-    location.reload();
-
+    this.location.back();
   }
-
-  openDownloadPage(blog){
-    console.log("this is working");
-    this.onOpenDownloadPage.emit(blog);
-  }
-
-
 }

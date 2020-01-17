@@ -1,36 +1,36 @@
 
   <div class="blog-content-section clearfix">
-  
+
     <div class="main-content">
-        
+
         <section>
-          
-          <div *ngIf="content && content.blogList">
-            <article *ngFor="let blog of content.blogList">
+
+          <div *ngIf="blogs">
+            <article *ngFor="let blog of blogs">
               <h2>{{blog.title}}</h2>
               <div>{{blog.author}}</div>
               <time>{{blog.date}}</time>
-    
+
               <p>{{displayTruncatedContent(blog.description)}}</p>
               <!-- <p class="more"><a (click)="openSingleArticle(blog)">Read More &raquo;</a></p> -->
-              <button class="button" (click)="openSingleArticle(blog)">Read more</button>
+              <button class="button" [routerLink]="['/single-article', blog.id]">Read more</button>
               <br><br><br>
-              
+
               <!-- <button type="submit" class="button" (click)="onSubmit($event)">
                   Submit
                 </button> -->
-                
+
 
           </article>
-  
+
           </div>
 
-          </section>   
-          </div> 
-    
+          </section>
+          </div>
+
           <div class="sidebar">
             <p>TESTING SIDEBAR</p>
-      
+
         </div>
-   
+
   </div>

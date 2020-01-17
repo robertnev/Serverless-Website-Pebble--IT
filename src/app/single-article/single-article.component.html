@@ -3,11 +3,11 @@
 <h2>{{blog.title}}</h2>
 <div>{{blog.author}}</div>
 <time>{{blog.date}}</time>
-    
+
 <p>{{blog.description}}</p>
 
 <button class="back-button" (click)=doBack()>Back</button>
 
-<button class="download-button" (click)=openDownloadPage(blog)>Download</button>
+<button class="download-button" [routerLink]="['/download', blog.id]">Download</button>
 
 
