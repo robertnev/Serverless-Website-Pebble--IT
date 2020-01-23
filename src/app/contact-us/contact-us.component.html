@@ -1,23 +1,23 @@
-<div class="contact-us-section">
+<!-- <div class="contact-us-section">
 
 <p>CONTACT US</p>
 
 <form class="contact-us-content" [formGroup]="contactUsFormGroup">
-  <!--NAME-->
+  
   <div>
     <label class="label">Name</label><br>
     <input type="text" formControlName="name">
   </div>
   <br/>
 
-  <!--EMAIL-->
+ 
 <div>
   <label class= "label">Email</label><br>
-  <input type="text" formControlName="email">
+  <input type="text" formControlName="email">x
 </div>
 <br>
   
-  <!--MESSAGE-->
+  
   <div>
       <label class= "label">Enquiries</label><br>
       <textarea area name="message" class="textarea"></textarea>
@@ -29,4 +29,50 @@
     Submit
   </button>
 </form>
+</div> -->
+
+
+
+<div class="container">
+  <div>
+    <div class="col-md-6 offset-md-3">
+      <div class="jumbotron text-center">
+        <h2>Contact Us</h2>
+        <form name="contactUsForm" [formGroup]="contactUsForm" (ngSubmit)="contactUsForm.valid && onSubmit()" >
+
+          <!-- NAME -->
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text"  class="form-control" formControlName="name" 
+            [ngClass]="{'is-invalid':contactUsForm.get('name').touched && contactUsForm.get('name').invalid}" required />
+            <div class="invalid-feedback">
+              <div>Name is required</div>
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" formControlName="email" 
+            [ngClass]="{'is-invalid':contactUsForm.get('email').touched && contactUsForm.get('email').invalid}"   />
+            <div *ngIf="contactUsForm.get('email').touched && contactUsForm.get('email').invalid"  class="invalid-feedback">
+              <div *ngIf="contactUsForm.get('email').errors.required">Email Name is required</div>
+              <div *ngIf="contactUsForm.get('email').errors.email">Email must be a valid email Address</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label for="comment">Message</label>
+              <textarea class="form-control" rows="5" id="comment"></textarea>
+          </div>
+
+          <!-- BUTTON -->
+          <div class="form-group">
+            <button class="btn btn-primary"  [disabled]="!contactUsForm.valid">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

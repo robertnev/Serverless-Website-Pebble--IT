@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
@@ -8,32 +8,57 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
+
   
 
-  contactUsFormGroup: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-  ) {
+  contactUsForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email
+    ]),
+    
+    
+   });
+    constructor(
+      private http: HttpClient,
+    ) { }
+  
+    
+    ngOnInit() {
+    }
+  
+    // onSubmit(){
+    //   alert(JSON.stringify(this.contactUsForm.value));
+    // }
+  
 
-  }
+  // contactUsFormGroup: FormGroup;
 
-  ngOnInit() {
-    this.initFormData();
-  }
+  // constructor(
+  //   private fb: FormBuilder,
+  //   private http: HttpClient,
+  // ) {
 
-  initFormData() {
-    this.contactUsFormGroup = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
-    });
-  }
+  // }
+
+  // ngOnInit() {
+  //   this.initFormData();
+  // }
+
+  // initFormData() {
+  //   this.contactUsFormGroup = this.fb.group({
+  //     name: ['', Validators.required],
+  //     email: ['', [Validators.required, Validators.email]]
+  //   });
+  // }
 
   onSubmit($event) {
-    console.log(JSON.stringify(this.contactUsFormGroup.value));
+    console.log(JSON.stringify(this.contactUsForm.value));
 
-    if (this.contactUsFormGroup.valid) {
+   
 
       // TODO: put this into environment specific configuration
       const apiUrlSendEmailContactUs =
@@ -41,7 +66,7 @@ export class ContactUsComponent implements OnInit {
 
         // https://j3pxo8zxi1.execute-api.ap-southeast-2.amazonaws.com/Prod/send-email-contact-us
 
-      this.http.post(apiUrlSendEmailContactUs, this.contactUsFormGroup.value, {
+      this.http.post(apiUrlSendEmailContactUs, this.contactUsForm.value, {
         headers: new HttpHeaders({
           'Content-Type': 'application/x-www-form-urlencoded'
         })
@@ -53,7 +78,8 @@ export class ContactUsComponent implements OnInit {
         }, () => {
           console.log('send-email-contact-us API invocation is completed');
         });
-    }
-  }
+   }
+    
+  
 
 }

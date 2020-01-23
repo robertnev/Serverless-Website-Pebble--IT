@@ -1,30 +1,51 @@
 
-<div class="download-section">
-
-    <p>Please provide your Name and Email, we will send you a Download Link. <br>Thank you. </p>
-
-    <form class="download-content" [formGroup]="downloadFormGroup">
-      <!--NAME-->
-      <div>
-        <label class="label">Name</label><br>
-        <input type="text" formControlName="name">
-      </div>
-      <br/>
-
-      <!--EMAIL-->
+<div class="container">
     <div>
-      <label class= "label">Email</label><br>
-      <input type="text" formControlName="email">
+      <div class="col-md-6 offset-md-3">
+        <div class="jumbotron text-center">
+          <h2>Download Form</h2>
+
+          <p>Please provide us your details, a Download Link will be sent through your email.</p>
+          <p>Thank You.</p>
+          <form name="downloadForm" [formGroup]="downloadForm" (ngSubmit)="downloadForm.valid && onSubmit()" >
+  
+            <!-- NAME -->
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text"  class="form-control" formControlName="name" 
+              [ngClass]="{'is-invalid':downloadForm.get('name').touched && downloadForm.get('name').invalid}" required />
+              <div class="invalid-feedback">
+                <div>Name is required</div>
+              </div>
+            </div>
+  
+            <!-- EMAIL -->
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" formControlName="email" 
+              [ngClass]="{'is-invalid':downloadForm.get('email').touched && downloadForm.get('email').invalid}"   />
+              <div *ngIf="downloadForm.get('email').touched && downloadForm.get('email').invalid"  class="invalid-feedback">
+                <div *ngIf="downloadForm.get('email').errors.required">Email Name is required</div>
+                <div *ngIf="downloadForm.get('email').errors.email">Email must be a valid email Address</div>
+              </div>
+            </div>
+  
+          
+  
+            <!-- BUTTON -->
+            <div class="form-group">
+              <button class="btn btn-primary"  [disabled]="!downloadForm.valid">Submit</button>
+            </div>
+          </form>
+          The download link will be for blog: [{{blog.id}}] {{blog.title}} ~ {{blog.author}} ({{blog.date}})
+
+          
+          
+        </div>
+      </div>
+      
     </div>
-    <br>
+    
+  </div>
 
-     <!--BUTTON-->
-      <br/>
-      <button class="button" (click)=doBack()>Back</button>
-      <button type="submit" class="button" (click)="onSubmit($event)">
-        Submit
-      </button>
-    </form>
-
-  The download link will be for blog: [{{blog.id}}] {{blog.title}} ~ {{blog.author}} ({{blog.date}})
-</div>

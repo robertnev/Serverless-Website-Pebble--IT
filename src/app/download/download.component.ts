@@ -13,8 +13,24 @@ import {Blog} from '../entity/blog';
 })
 export class DownloadComponent implements OnInit, OnDestroy {
 
+  // downloadForm = new FormGroup({
+  //   name: new FormControl('', Validators.required),
+  //   email: new FormControl('', [
+  //     Validators.required,
+  //     Validators.email
+  //   ]),
+  // });
+  downloadForm;
+
+  initFormData() {
+      this.downloadForm = this.fb.group({
+        name: new FormControl('', Validators.required),
+        email: new FormControl('', [Validators.required, Validators.email])
+      });
+    }
+
   blog: Blog;
-  downloadFormGroup: FormGroup;
+  
   subscriptions: { params? } = {};
 
   constructor(
@@ -42,23 +58,18 @@ export class DownloadComponent implements OnInit, OnDestroy {
     }
   }
 
-  initFormData() {
-    this.downloadFormGroup = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
-    });
-  }
+  
 
   onSubmit($event) {
-    console.log(JSON.stringify(this.downloadFormGroup.value));
+    console.log(JSON.stringify(this.downloadForm.value));
+    
 
-    if (this.downloadFormGroup.valid) {
 
       // TODO: put this into environment specific configuration
       const apiUrlSendEmailContactUs =
         'https://jfm8gghmh3.execute-api.ap-southeast-2.amazonaws.com/default/pebble-it-send-download-link';
 
-      this.http.post(apiUrlSendEmailContactUs, this.downloadFormGroup.value, {
+      this.http.post(apiUrlSendEmailContactUs, this.downloadForm.value, {
         headers: new HttpHeaders({
           'Content-Type': 'application/x-www-form-urlencoded'
         })
@@ -70,10 +81,11 @@ export class DownloadComponent implements OnInit, OnDestroy {
         }, () => {
           console.log('send-email-contact-us API invocation is completed');
         });
-    }
+    
   }
 
   doBack() {
     this.location.back();
   }
 }
+
