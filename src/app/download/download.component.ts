@@ -21,15 +21,19 @@ export class DownloadComponent implements OnInit, OnDestroy {
   //   ]),
   // });
   downloadForm;
+  
 
   initFormData() {
       this.downloadForm = this.fb.group({
         name: new FormControl('', Validators.required),
-        email: new FormControl('', [Validators.required, Validators.email])
+        email: new FormControl('', [Validators.required, Validators.email]),
+        link: new FormControl('')
       });
     }
+    
 
   blog: Blog;
+  
   
   subscriptions: { params? } = {};
 
@@ -58,16 +62,16 @@ export class DownloadComponent implements OnInit, OnDestroy {
     }
   }
 
+
   
 
   onSubmit($event) {
+    this.downloadForm.patchValue({link: this.blog.dl_link});
     console.log(JSON.stringify(this.downloadForm.value));
-    
-
-
+ 
       // TODO: put this into environment specific configuration
       const apiUrlSendEmailContactUs =
-        'https://jfm8gghmh3.execute-api.ap-southeast-2.amazonaws.com/default/pebble-it-send-download-link';
+        'https://cors-anywhere.herokuapp.com/https://jfm8gghmh3.execute-api.ap-southeast-2.amazonaws.com/default/pebble-it-send-download-link';
 
       this.http.post(apiUrlSendEmailContactUs, this.downloadForm.value, {
         headers: new HttpHeaders({
@@ -81,6 +85,8 @@ export class DownloadComponent implements OnInit, OnDestroy {
         }, () => {
           console.log('send-email-contact-us API invocation is completed');
         });
+
+      
     
   }
 

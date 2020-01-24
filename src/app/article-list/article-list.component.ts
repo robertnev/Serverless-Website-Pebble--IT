@@ -21,7 +21,7 @@ export class ArticleListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.descriptionMaxLength = this.descriptionMaxLength || 100;
+    this.descriptionMaxLength = this.descriptionMaxLength || 500;
     this.descriptionSuffix = this.descriptionSuffix || ' ...';
     this.subscriptions.blogs = this.blogService.getBlogs$().subscribe(newBlogs => this.blogs = newBlogs || []);
   }

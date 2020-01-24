@@ -39,10 +39,10 @@ export class BlogService {
 
 
   private loadBlogs() {
-    return this.http.get('https://serverlesspebbleit.s3-ap-southeast-2.amazonaws.com/content.json')
+    return this.http.get('https://cors-anywhere.herokuapp.com/https://x7cxabjylj.execute-api.ap-southeast-2.amazonaws.com/dev/blogs')
       .pipe(
         map((data: any) =>
-          data.blogList.map(blog => new Blog(blog.id, blog.title, blog.description, blog.author, blog.date))
+          data.Items.map(blog => new Blog(blog.dl_link, blog.id, blog.title, blog.desc, blog.author))
         )
       );
   }

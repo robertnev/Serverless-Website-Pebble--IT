@@ -7,9 +7,9 @@
 
           <div *ngIf="blogs">
             <article *ngFor="let blog of blogs">
-              <h2>{{blog.title}}</h2>
-              <div>{{blog.author}}</div>
-              <time>{{blog.date}}</time>
+              <h1>{{blog.title}}</h1>
+              <h4>{{blog.author}}</h4>
+              <!-- <time>{{blog.date}}</time> -->
 
               <p>{{displayTruncatedContent(blog.description)}}</p>
               <!-- <p class="more"><a (click)="openSingleArticle(blog)">Read More &raquo;</a></p> -->
