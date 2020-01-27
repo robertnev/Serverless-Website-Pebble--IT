@@ -30,12 +30,14 @@
                 <div *ngIf="downloadForm.get('email').errors.email">Email must be a valid email Address</div>
               </div>
             </div>
+
+            
   
           
   
             <!-- BUTTON -->
             <div class="form-group">
-              <button class="btn btn-primary"  [disabled]="!downloadForm.valid">Submit</button>
+              <button class="btn" [disabled]="!downloadForm.valid">Submit</button>
             </div>
           </form>
           The download link will be for blog: [{{blog.id}}] {{blog.title}} ~ {{blog.author}} ({{blog.date}})

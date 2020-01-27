@@ -1,13 +1,18 @@
 
-
-<h2>{{blog.title}}</h2>
-<div>{{blog.author}}</div>
-<time>{{blog.date}}</time>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+<h1>{{blog.title}}</h1>
+<h4>{{blog.author}}</h4>
+<!-- <time>{{blog.date}}</time> -->
 
 <p>{{blog.description}}</p>
 
-<button class="back-button" (click)=doBack()>Back</button>
+<button class=" btn btn-primary float-left" (click)=doBack()>Back</button>
 
-<button class="download-button" [routerLink]="['/download', blog.id]">Download</button>
+<button class="btn btn-primary float-right" [routerLink]="['/download', blog.id]">Download</button>
+</div>
+</div>
+</div>
 
 
