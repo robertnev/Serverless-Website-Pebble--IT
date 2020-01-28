@@ -20,8 +20,10 @@ export class ContactUsComponent implements OnInit {
       Validators.email
     ]),
     
+    message: new FormControl('')  
     
-   });
+  });
+
     constructor(
       private http: HttpClient,
     ) { }
@@ -55,16 +57,16 @@ export class ContactUsComponent implements OnInit {
   //   });
   // }
 
-  onSubmit($event) {
+  onSubmit() {
     console.log(JSON.stringify(this.contactUsForm.value));
 
    
 
       // TODO: put this into environment specific configuration
       const apiUrlSendEmailContactUs =
-        'https://egmwqp0tah.execute-api.ap-southeast-2.amazonaws.com/default/pebble-it-send-email-contact-us';
+        'https://cors-anywhere.herokuapp.com/https://egmwqp0tah.execute-api.ap-southeast-2.amazonaws.com/default/pebble-it-send-email-contact-us';
 
-        // https://j3pxo8zxi1.execute-api.ap-southeast-2.amazonaws.com/Prod/send-email-contact-us
+      const apiUrlSendEmailContactUsNo2 ="https://cors-anywhere.herokuapp.com/https://8zb3zdg9p4.execute-api.ap-southeast-2.amazonaws.com/default/send_second_email"
 
       this.http.post(apiUrlSendEmailContactUs, this.contactUsForm.value, {
         headers: new HttpHeaders({
@@ -78,6 +80,33 @@ export class ContactUsComponent implements OnInit {
         }, () => {
           console.log('send-email-contact-us API invocation is completed');
         });
+
+
+
+        this.http.post(apiUrlSendEmailContactUsNo2, this.contactUsForm.value, {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/x-www-form-urlencoded'
+          })
+        })
+          .subscribe((value) => {
+            console.log(JSON.stringify(value));
+          }, (error) => {
+            console.log(JSON.stringify(error));
+          }, () => {
+            console.log('send-email-contact-us API invocation is completed');
+          });
+
+        // add an API Lambda, to post to Dynamo
+
+        // add an API --- Lambda ---- send an email to the company's email
+
+
+
+      
+      
+      
+
+
         
    }
     

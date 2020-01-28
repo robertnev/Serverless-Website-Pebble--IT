@@ -7,7 +7,7 @@
 
           <p>Please provide us your details, a Download Link will be sent through your email.</p>
           <p>Thank You.</p>
-          <form name="downloadForm" [formGroup]="downloadForm" (ngSubmit)="downloadForm.valid && onSubmit()" >
+          <form name="downloadForm" [formGroup]="downloadForm" (submit)="onSubmit()" >
   
             <!-- NAME -->
             <div class="form-group">
@@ -37,10 +37,10 @@
   
             <!-- BUTTON -->
             <div class="form-group">
-              <button class="btn" [disabled]="!downloadForm.valid">Submit</button>
+              <button class="btn btn-primary" [disabled]="!downloadForm.valid">Submit</button>
             </div>
           </form>
-          The download link will be for blog: [{{blog.id}}] {{blog.title}} ~ {{blog.author}} ({{blog.date}})
+          <!-- The download link will be for blog: [{{blog.id}}] {{blog.title}} ~ {{blog.author}} ({{blog.date}}) -->
 
           
           

@@ -65,7 +65,7 @@ export class DownloadComponent implements OnInit, OnDestroy {
 
   
 
-  onSubmit($event) {
+  onSubmit() {
     this.downloadForm.patchValue({link: this.blog.dl_link});
     console.log(JSON.stringify(this.downloadForm.value));
  
