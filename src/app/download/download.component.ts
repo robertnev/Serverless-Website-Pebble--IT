@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {BlogService} from '../service/blog.service';
 import {Location} from '@angular/common';
 import {Blog} from '../entity/blog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-download',
@@ -43,8 +44,14 @@ export class DownloadComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private blogService: BlogService,
     private location: Location,
+    public router: Router
   ) {
 
+  }
+
+  goToThankYou()
+  {
+     this.router.navigate(['/thank-you']);
   }
 
   ngOnInit() {
@@ -85,6 +92,11 @@ export class DownloadComponent implements OnInit, OnDestroy {
         }, () => {
           console.log('send-email-contact-us API invocation is completed');
         });
+
+        setTimeout(() => {
+          this.goToThankYou();
+      }, 1000
+      );
 
       
     

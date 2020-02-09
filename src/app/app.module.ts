@@ -9,6 +9,8 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { DownloadComponent } from './download/download.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { SingleArticleComponent } from './single-article/single-article.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
+
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { SingleArticleComponent } from './single-article/single-article.componen
     ArticleListComponent,
     DownloadComponent,
     ContactUsComponent,
-    SingleArticleComponent
+    SingleArticleComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

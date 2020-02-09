@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-us',
@@ -26,7 +27,13 @@ export class ContactUsComponent implements OnInit {
 
     constructor(
       private http: HttpClient,
+      public router: Router
     ) { }
+
+    goToThankYou()
+    {
+       this.router.navigate(['/thank-you']);
+    }
   
     
     ngOnInit() {
@@ -95,19 +102,12 @@ export class ContactUsComponent implements OnInit {
           }, () => {
             console.log('send-email-contact-us API invocation is completed');
           });
-
-        // add an API Lambda, to post to Dynamo
-
-        // add an API --- Lambda ---- send an email to the company's email
-
-
-
-      
-      
-      
-
-
-        
+           
+          setTimeout(() => {
+            this.goToThankYou();
+        }, 1000
+        );
+    
    }
     
   
